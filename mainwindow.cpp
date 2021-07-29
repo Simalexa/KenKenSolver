@@ -24,7 +24,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
-    /*scene->clear();
+    scene->clear();
     Solver g;
     rule *r = new rule[20];
     Contour c;
@@ -37,7 +37,7 @@ void MainWindow::on_pushButton_clicked()
         qDebug()<<"Error";
     g.openfile(r,fileName);
     QPen outlinePen(Qt::black);
-    outlinePen.setWidth(2);
+    outlinePen.setWidth(3);
     max = g.max;
     step = 80;
     for (int i = 0; i <= max; ++i)
@@ -55,63 +55,34 @@ void MainWindow::on_pushButton_clicked()
         }
         text = scene->addText(r[j].op + QString::number(r[j].opNumber));
         text->setPos((r[j].Y[0]-1)*step,(r[j].X[0]-1)*step);
-    }*/
+    }
 }
 
-
-void MainWindow::on_pushButton_2_clicked()
+void MainWindow::on_pushButton_3_clicked()
 {
-   // rule *r;
-    //r = new rule[20];
-    //Solver g;
-    //variation *v;
-    //v = new variation[g.ruleQuantity - 1];
-    //QGraphicsTextItem *text;
-    //QFont solutionNumbers("Arial", 35);
-    //QElapsedTimer timer;
-    //QString fileName1 = QFileDialog::getOpenFileName(this, "Open Document", QDir::currentPath(),"Text files (*.txt*)");
-    //g.openfile(r,fileName1);
-    //timer.start();
-    //g.FindPos(r,v);
-    //int **XY;
-    /*XY = new int*[max];
-    for(int i=0;i<max;i++)
-        XY[i] = new int[max];
-    for(int i=0;i<max;i++)
-        for(int j=0;j<max;j++)
-            XY[i][j]=1;*/
-    //XY=g.findSolution(v,r);
-    //g.printSolution(XY);
-    //fileName1 = "";
-    //r = {};
-    //v = {};
-    /*QMessageBox box;
-    box.setWindowTitle("Time of the calculation");
-    box.setText(QString::number(timer.nsecsElapsed()) + " nanoseconds");
-    box.exec();*/
-    /*for(int i=0 ; i < max ; i++)
+    Solver g;
+    rule *r;
+    QGraphicsTextItem *text;
+    QFont solutionNumbers("Arial", 35);
+    QElapsedTimer timer;
+    variation *v;
+    int **XY;
+    r = new rule[30];
+    g.openfile(r,fileName);
+    v = new variation[g.ruleQuantity - 1];
+    timer.start();
+    g.FindPos(r,v);
+    XY=g.findSolution(v,r);
+    QMessageBox box;
+        box.setWindowTitle("Time of the calculation");
+        box.setText(QString::number(timer.nsecsElapsed()*pow(10,-9)) + " seconds");
+        box.exec();
+    for(int i=0 ; i < max ; i++)
         for(int j=0; j < max ; j++)
         {
             text = scene->addText(QString::number(XY[i][j]));
             text->setPos(j * step + step /4, i * step + step / 8);
             text->setFont(solutionNumbers);
-        }*/
-    //g.max=0;
-}
+        }
 
-void MainWindow::on_pushButton_3_clicked()
-{
-    rule *r;
-    r = new rule[20];
-    //Solver g;
-    //variation *v;
-    //v = new variation[g.ruleQuantity - 1];
-    fileName = QFileDialog::getOpenFileName(this, "Open Document", QDir::currentPath(),"Text files (*.txt*)");
-    g.openfile(r,fileName);
-    //for(int i=0; i < g.ruleQuantity - 1; i++)
-    //g.FindPos(r,v);
-    //int **XY;
-    //XY=g.findSolution(v,r);
-    //g.printSolution(XY);
-    //delete XY;
 }

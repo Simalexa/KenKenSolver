@@ -5,15 +5,15 @@
 #include <QDebug>
 struct rule
 {
-    int X[5];
-    int Y[5];
+    int X[8];
+    int Y[8];
     int quantity;
     int opNumber;
     QString op;
 };
 struct variation
 {
-    int Coord[40][4];
+    int Coord[20][3];
     int number;
 };
 

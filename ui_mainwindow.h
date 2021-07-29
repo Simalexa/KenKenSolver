@@ -27,12 +27,11 @@ class Ui_MainWindow
 public:
     QWidget *centralwidget;
     QGridLayout *gridLayout;
-    QPushButton *pushButton_2;
-    QGraphicsView *graphicsView;
     QSpacerItem *horizontalSpacer;
     QSpacerItem *horizontalSpacer_2;
-    QPushButton *pushButton;
     QPushButton *pushButton_3;
+    QGraphicsView *graphicsView;
+    QPushButton *pushButton;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -45,33 +44,28 @@ public:
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         gridLayout = new QGridLayout(centralwidget);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        pushButton_2 = new QPushButton(centralwidget);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-
-        gridLayout->addWidget(pushButton_2, 3, 3, 1, 1);
-
-        graphicsView = new QGraphicsView(centralwidget);
-        graphicsView->setObjectName(QString::fromUtf8("graphicsView"));
-
-        gridLayout->addWidget(graphicsView, 0, 0, 1, 5);
-
         horizontalSpacer = new QSpacerItem(20, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
 
-        gridLayout->addItem(horizontalSpacer, 3, 4, 1, 1);
+        gridLayout->addItem(horizontalSpacer, 3, 3, 1, 1);
 
         horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
 
         gridLayout->addItem(horizontalSpacer_2, 3, 0, 1, 1);
 
-        pushButton = new QPushButton(centralwidget);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-
-        gridLayout->addWidget(pushButton, 3, 1, 1, 1);
-
         pushButton_3 = new QPushButton(centralwidget);
         pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
 
         gridLayout->addWidget(pushButton_3, 3, 2, 1, 1);
+
+        graphicsView = new QGraphicsView(centralwidget);
+        graphicsView->setObjectName(QString::fromUtf8("graphicsView"));
+
+        gridLayout->addWidget(graphicsView, 0, 0, 1, 4);
+
+        pushButton = new QPushButton(centralwidget);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+
+        gridLayout->addWidget(pushButton, 3, 1, 1, 1);
 
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
@@ -90,9 +84,8 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
-        pushButton_2->setText(QApplication::translate("MainWindow", "Solve", nullptr));
+        pushButton_3->setText(QApplication::translate("MainWindow", "Solve", nullptr));
         pushButton->setText(QApplication::translate("MainWindow", "Open", nullptr));
-        pushButton_3->setText(QApplication::translate("MainWindow", "PushButton", nullptr));
     } // retranslateUi
 
 };

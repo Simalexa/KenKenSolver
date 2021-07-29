@@ -20,19 +20,16 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+
 private slots:
     void on_pushButton_clicked();
-
-    void on_pushButton_2_clicked();
 
     void on_pushButton_3_clicked();
 
 private:
     int max;
     int step;
-    //struct rule *r;
-    struct variation *v;
-    class Solver g;
+    //class Solver g;
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
     QString fileName;

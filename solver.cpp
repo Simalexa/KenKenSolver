@@ -8,6 +8,7 @@ void Solver::openfile(struct rule *&r, QString fileName)
 {
     QFile List(fileName);
     int k=0, n=0;
+    ruleQuantity=1;
     if (List.open(QIODevice::ReadOnly))
     {
        QTextStream in(&List);
@@ -44,7 +45,6 @@ void Solver::openfile(struct rule *&r, QString fileName)
                }
            }
            r[n].quantity=k;
-           qDebug()<<r[n].op<<" "<<r[n].opNumber<<" "<<r[n].quantity;
            n++;
            k=0;
            ruleQuantity++;
@@ -56,11 +56,12 @@ void Solver::openfile(struct rule *&r, QString fileName)
         qDebug()<<"Error";
     List.close();
     max=r[0].X[0];
-    for(int i=0; i< ruleQuantity - 1; i++)
-        for(int j=0; j < r[i].quantity;j++)
+    for(int i=0; i < ruleQuantity - 1; i++)
+        for(int j=0; j < r[i].quantity; j++)
             if(r[i].X[j] > max)
                 max=r[i].X[j];
 }
+
 int Solver::FindPos(struct rule*& r, struct variation *&v)
 {
    for(int j = 0; j < ruleQuantity - 1 ;j++)
@@ -220,7 +221,6 @@ bool Solver::CreateMassive(int *&a,struct variation *v, struct rule *r)
 }
 void Solver::getMatrix(int *&a,struct variation *v, struct rule *r, int **&XY)
 {
-    //int XY[max][max];
     for(int i=0 ; i < max ; i++)
         for(int j=0 ; j < max ; j++)
             for(int k=0; k < ruleQuantity - 1; k++)
